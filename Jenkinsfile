@@ -22,5 +22,13 @@ pipeline {
       }
     }
 
+    stage('Deliver') {
+      steps {
+        sh './jenkins/scripts/deliver.sh'
+        input 'Has terminado de usar el sitio? Quieres cerrarlo?'
+        sh './jenkins/scripts/kill.sh'
+      }
+    }
+
   }
 }
